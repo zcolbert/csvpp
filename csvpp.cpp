@@ -71,7 +71,27 @@ std::string csv::joinFields(const csv::row& fields, const char delimiter /* = ',
 	return oss.str();
 }
 
+std::vector<csv::row> csv::readRows(std::ifstream* fs, const char delimiter /* = ',' */)
+{
+	std::vector<csv::row> rows;
+	std::string line;
+	while (std::getline(*fs, line))
+	{
+		csv::row fields = csv::parseRow(line, delimiter);
+		rows.push_back(fields);
+	}
+	return rows;
+}
+
 void csv::writeRow(std::ofstream* fs, const csv::row& fields, const char delimiter /* = ',' */)
 {
-	*fs << joinFields(fields) << '\n';
+	*fs << joinFields(fields, delimiter) << '\n';
+}
+
+void csv::writeRows(std::ofstream* fs, const std::vector<csv::row>& rows, const char delimiter /* = ',' */)
+{
+		for (auto r : rows)
+		{
+			csv::writeRow(fs, r, delimiter);
+		}
 }
