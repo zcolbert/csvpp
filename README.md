@@ -1,6 +1,6 @@
 # csvpp
 
-```
+```cpp
 // Example:
 
 #include <iostream>
