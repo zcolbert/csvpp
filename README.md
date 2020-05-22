@@ -17,20 +17,23 @@ int main()
 {
 	using namespace std;
 
-	std::ifstream fs;
-	fs.open(testFile);
+	std::ifstream ifs;
+	ifs.open(testFile);
 
 	std::vector<csv::row> rows;
 
-	if (fs.is_open())
+	if (ifs.is_open())
 	{
-		std::string line;
-		while (std::getline(fs, line))
-		{
-			rows.push_back(csv::parseRow(line));
-		}
+		rows = csv::readRows(&ifs);
 	}
-	std::cout << "Finished\n";
+
+	std::ofstream ofs;
+	ofs.open(outFile);
+
+	if (ofs.is_open())
+	{
+		csv::writeRows(&ofs, rows, '|');
+	}
 
 	return 0;
 }
