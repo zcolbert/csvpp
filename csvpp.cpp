@@ -4,7 +4,9 @@
 #include "csvpp.h"
 
 
-csv::row csv::parseRow(const std::string& line, const char delimiter /* = ',' */)
+csv::row 
+csv::parseRow(const std::string& line, 
+              const char delimiter /* = ',' */)
 {
 	csv::row fields;
 	std::ostringstream oss;
@@ -39,7 +41,9 @@ csv::row csv::parseRow(const std::string& line, const char delimiter /* = ',' */
 	return fields;
 }
 
-bool csv::stringContainsDelim(const std::string& str, const char delimiter /* = ',' */)
+bool 
+csv::stringContainsDelim(const std::string& str, 
+                         const char delimiter /* = ',' */)
 {
 	for (auto c : str) {
 		if (c == delimiter)
@@ -50,7 +54,9 @@ bool csv::stringContainsDelim(const std::string& str, const char delimiter /* = 
 	return false;
 }
 
-std::string csv::joinFields(const csv::row& fields, const char delimiter /* = ',' */)
+std::string 
+csv::joinFields(const csv::row& fields, 
+                const char delimiter /* = ',' */)
 {
 	std::ostringstream oss;
 	for (auto it = fields.begin(); it != fields.end(); ++it)
@@ -71,7 +77,9 @@ std::string csv::joinFields(const csv::row& fields, const char delimiter /* = ',
 	return oss.str();
 }
 
-std::vector<csv::row> csv::readRows(std::ifstream* fs, const char delimiter /* = ',' */)
+std::vector<csv::row> 
+csv::readRows(std::ifstream* fs, 
+              const char delimiter /* = ',' */)
 {
 	std::vector<csv::row> rows;
 	std::string line;
@@ -83,15 +91,21 @@ std::vector<csv::row> csv::readRows(std::ifstream* fs, const char delimiter /* =
 	return rows;
 }
 
-void csv::writeRow(std::ofstream* fs, const csv::row& fields, const char delimiter /* = ',' */)
+void 
+csv::writeRow(std::ofstream* fs, 
+              const csv::row& fields, 
+              const char delimiter /* = ',' */)
 {
 	*fs << joinFields(fields, delimiter) << '\n';
 }
 
-void csv::writeRows(std::ofstream* fs, const std::vector<csv::row>& rows, const char delimiter /* = ',' */)
+void 
+csv::writeRows(std::ofstream* fs, 
+               const std::vector<csv::row>& rows, 
+               const char delimiter /* = ',' */)
 {
-		for (auto r : rows)
-		{
-			csv::writeRow(fs, r, delimiter);
-		}
+    for (auto r : rows)
+    {
+        csv::writeRow(fs, r, delimiter);
+    }
 }
