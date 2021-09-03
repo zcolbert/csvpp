@@ -13,26 +13,26 @@
 
 int main()
 {
-	using namespace std;
+    using namespace std;
 	
-	std::string testFile("my_csv_file.csv");
+    std::string testFile("my_csv_file.csv");
 
-	std::ifstream ifs;
-	ifs.open(testFile);
+    std::ifstream ifs;
+    ifs.open(testFile);
 
-	std::vector<csv::row> rows;
+    std::vector<csv::row> rows;
 
-	if (ifs.is_open()) {
-		rows = csv::readRows(&ifs);
-	}
+    if (ifs.is_open()) {
+        rows = csv::readRows(&ifs);
+    }
 
-	std::ofstream ofs;
-	ofs.open(outFile);
+    std::ofstream ofs;
+    ofs.open(outFile);
 
-	if (ofs.is_open()) {
-		csv::writeRows(&ofs, rows, '|');
-	}
+    if (ofs.is_open()) {
+        csv::writeRows(&ofs, rows, '|');
+    }
 
-	return 0;
+    return 0;
 }
 ```
