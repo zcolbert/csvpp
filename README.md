@@ -23,7 +23,7 @@ int main()
 	std::vector<csv::row> rows;
 
 	if (ifs.is_open()) {
-	    rows = csv::readRows(&ifs);
+		rows = csv::readRows(&ifs);
 	}
 
 	std::ofstream ofs;
