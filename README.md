@@ -1,5 +1,7 @@
 # csvpp
 
+A set of functions for reading and writing CSV files.
+
 ```cpp
 // Example usage:
 
