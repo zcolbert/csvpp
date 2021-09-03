@@ -1,37 +1,35 @@
 # csvpp
 
 ```cpp
-// Example:
+// Example usage:
 
-#include <iostream>
 #include <fstream>
+#include <iostream>
 #include <string>
 #include <vector>
 
 #include "csvpp.h"
 
-std::string testFile("my_csv_file.csv");
-
 
 int main()
 {
 	using namespace std;
+	
+	std::string testFile("my_csv_file.csv");
 
 	std::ifstream ifs;
 	ifs.open(testFile);
 
 	std::vector<csv::row> rows;
 
-	if (ifs.is_open())
-	{
-		rows = csv::readRows(&ifs);
+	if (ifs.is_open()) {
+	    rows = csv::readRows(&ifs);
 	}
 
 	std::ofstream ofs;
 	ofs.open(outFile);
 
-	if (ofs.is_open())
-	{
+	if (ofs.is_open()) {
 		csv::writeRows(&ofs, rows, '|');
 	}
 
